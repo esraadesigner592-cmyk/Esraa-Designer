@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f1e9">
+  <meta name="description" content="Made Memory — تفاصيل صغيرة تصنع ذكريات كبيرة. دعوات وكروت وتفاصيل مناسبات بتصاميم خاصة.">
+  <title>Made Memory | ميد ميموري</title>
+  <style>
+    :root{
+      --wine:#642b3b; --wine-dark:#47202c; --wine-soft:#8b5964;
+      --cream:#f7f1e9; --paper:#fffdf9; --beige:#e8d8c8;
+      --gold:#b59665; --ink:#382b2b; --muted:#887b74;
+      --line:rgba(100,43,59,.14); --shadow:0 18px 55px rgba(65,35,39,.10);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--cream);color:var(--ink);font-family:"Segoe UI",Tahoma,Arial,sans-serif;line-height:1.7}
+    a{color:inherit;text-decoration:none}
+    button,input,textarea,select{font:inherit}
+    .wrap{width:min(1160px,calc(100% - 44px));margin:auto}
+    .topbar{height:86px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
+    .brand{display:flex;flex-direction:column;line-height:1.1}
+    .brand strong{font-family:Georgia,serif;font-size:25px;letter-spacing:.4px;color:var(--wine);font-weight:500;direction:ltr}
+    .brand span{font-size:11px;letter-spacing:2.5px;color:var(--gold);margin-top:7px;direction:ltr}
+    nav{display:flex;gap:30px;font-size:14px;color:#655653}
+    nav a{transition:.2s} nav a:hover{color:var(--wine)}
+    .nav-cta,.btn{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--wine);padding:11px 22px;border-radius:2px;color:var(--paper);background:var(--wine);font-size:13px;transition:.25s;cursor:pointer}
+    .nav-cta:hover,.btn:hover{background:var(--wine-dark);transform:translateY(-2px)}
+    .menu{display:none;background:none;border:0;color:var(--wine);font-size:25px}
+    .hero{min-height:640px;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:60px;padding:72px 0 82px}
+    .eyebrow{font-size:11px;letter-spacing:3px;color:var(--gold);font-weight:600}
+    h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(42px,5vw,68px);font-weight:400;line-height:1.2;color:var(--wine-dark);margin:20px 0}
+    h1 em{font-style:normal;color:var(--gold)}
+    .hero p{max-width:450px;color:#766963;font-size:16px;line-height:2;margin:0 0 30px}
+    .hero-actions{display:flex;align-items:center;gap:24px}
+    .text-link{font-size:13px;color:var(--wine);border-bottom:1px solid var(--gold);padding-bottom:4px}
+    .hero-art{position:relative;min-height:475px;display:flex;align-items:center;justify-content:center}
+    .hero-frame{width:min(390px,82%);height:460px;background:#e7d8d0;padding:14px;box-shadow:var(--shadow);transform:rotate(2deg);position:relative}
+    .hero-frame img{width:100%;height:100%;object-fit:cover;object-position:center}
+    .hero-frame:after{content:"";position:absolute;inset:25px;border:1px solid rgba(181,150,101,.7);pointer-events:none}
+    .hero-stamp{position:absolute;bottom:18px;left:0;background:var(--paper);padding:18px 24px;box-shadow:var(--shadow);font-family:Georgia,serif;color:var(--wine);font-size:19px;direction:ltr}
+    .decor{position:absolute;border:1px solid rgba(181,150,101,.55);border-radius:50%;width:120px;height:120px;top:18px;right:5px}
+    section{padding:88px 0}
+    .section-head{text-align:center;margin:0 auto 42px;max-width:620px}
+    .section-head h2{font-family:Georgia,serif;font-weight:400;font-size:39px;color:var(--wine-dark);margin:10px 0}
+    .section-head p{color:var(--muted);font-size:14px;margin:0}
+    .services{background:var(--paper)}
+    .service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .service{padding:34px 28px;border:1px solid var(--line);min-height:205px;background:linear-gradient(145deg,#fffdf9,#faf5ef)}
+    .service-no{font-family:Georgia,serif;color:var(--gold);font-size:14px;direction:ltr}
+    .service h3{font-weight:500;color:var(--wine);font-size:20px;margin:18px 0 8px}
+    .service p{color:var(--muted);font-size:13px;margin:0;line-height:1.9}
+    .portfolio-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+    .project{background:var(--paper);border:1px solid var(--line);padding:13px;box-shadow:0 8px 28px rgba(65,35,39,.045);cursor:pointer;transition:.25s}
+    .project:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+    .project-image{height:420px;background:#eee5df;overflow:hidden;display:flex;align-items:center;justify-content:center}
+    .project-image img{width:100%;height:100%;object-fit:contain;background:#f3edf0}
+    .project-meta{padding:19px 12px 12px;display:flex;justify-content:space-between;align-items:center}
+    .project-meta h3{font-weight:500;color:var(--wine);font-size:17px;margin:0}
+    .project-meta span{font-size:11px;color:var(--gold)}
+    .project-note{text-align:center;color:var(--muted);font-size:12px;margin-top:30px}
+    .about{background:#efe5dc}
+    .about-inner{max-width:760px;margin:auto;text-align:center}
+    .about h2{font-family:Georgia,serif;font-size:42px;font-weight:400;color:var(--wine-dark);margin:12px 0}
+    .about p{color:#776963;line-height:2.1;font-size:15px}
+    .request{background:var(--wine-dark);color:var(--paper)}
+    .request .section-head h2{color:var(--paper)}
+    .request .section-head p{color:#d9c9c1}
+    .request-form{max-width:760px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .field{display:flex;flex-direction:column;gap:7px}
+    .field.full{grid-column:1/-1}
+    .field label{font-size:12px;color:#e5d8d1}
+    .field input,.field select,.field textarea{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.25);color:white;padding:13px 14px;border-radius:0;outline:none}
+    .field input::placeholder,.field textarea::placeholder{color:#c7b7b1}
+    .field select option{color:#382b2b}
+    .field textarea{min-height:110px;resize:vertical}
+    .request-form .btn{background:var(--gold);border-color:var(--gold);color:#2e2020;grid-column:1/-1;justify-self:center;margin-top:8px}
+    .form-hint{text-align:center;color:#d9c9c1;font-size:11px;grid-column:1/-1;margin:0}
+    footer{padding:34px 0;background:#351b24;color:#d9c9c1}
+    .footer-inner{display:flex;justify-content:space-between;align-items:center;gap:20px}
+    footer .brand strong{color:#f7eee7}footer .brand span{color:var(--gold)}
+    footer small{font-size:11px}
+    .modal{display:none;position:fixed;inset:0;background:rgba(28,17,20,.78);z-index:10;padding:28px;overflow:auto}
+    .modal.open{display:flex;align-items:center;justify-content:center}
+    .modal-box{background:var(--paper);width:min(900px,100%);padding:18px;position:relative}
+    .modal-close{position:absolute;top:8px;left:12px;border:0;background:none;color:var(--wine);font-size:28px;cursor:pointer}
+    .modal-images{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:25px}
+    .modal-images img{width:100%;max-height:70vh;object-fit:contain;background:#f4edf0}
+    .modal-title{color:var(--wine);font-size:20px;margin:8px 0}
+    @media(max-width:800px){
+      .topbar{height:74px}.menu{display:block}nav{display:none;position:absolute;top:74px;right:0;left:0;background:var(--cream);padding:22px;z-index:5;flex-direction:column;gap:17px;border-bottom:1px solid var(--line)}nav.show{display:flex}.nav-cta{display:none}
+      .hero{grid-template-columns:1fr;gap:25px;padding:55px 0}.hero-copy{text-align:center}.hero p{margin:0 auto 25px}.hero-actions{justify-content:center}.hero-art{min-height:430px}.hero-frame{height:405px}
+      section{padding:65px 0}.service-grid{grid-template-columns:1fr}.portfolio-grid{grid-template-columns:1fr}.project-image{height:360px}
+    }
+    @media(max-width:520px){
+      .wrap{width:min(100% - 30px,1160px)}.hero{min-height:auto}.hero-frame{width:82%;height:360px}.hero-art{min-height:380px}.hero-stamp{font-size:16px;padding:13px 17px}
+      .section-head h2,.about h2{font-size:32px}.request-form{grid-template-columns:1fr}.field.full{grid-column:auto}.request-form .btn,.form-hint{grid-column:auto}
+      .footer-inner{flex-direction:column;text-align:center}.modal-images{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <header class="wrap topbar">
+    <a class="brand" href="#home" aria-label="Made Memory الرئيسية"><strong>Made Memory</strong><span>ميد ميموري</span></a>
+    <button class="menu" id="menuBtn" aria-label="فتح القائمة">☰</button>
+    <nav id="nav">
+      <a href="#home">الرئيسية</a><a href="#services">خدماتنا</a><a href="#work">أعمالنا</a><a href="#about">من نحن</a><a href="#request">اطلبي الآن</a>
+    </nav>
+    <a class="nav-cta" href="#request">ابدئي طلبك</a>
+  </header>
+
+  <main>
+    <section class="wrap hero" id="home">
+      <div class="hero-copy">
+        <div class="eyebrow">MADE WITH LOVE · MADE TO REMEMBER</div>
+        <h1>تفاصيل صغيرة،<br><em>ذكريات تدوم.</em></h1>
+        <p>نصمّم لكِ دعوات وكروت وتفاصيل مناسبات تحمل روح لحظتك، وتحوّل أجمل أيامك إلى ذكريات تبقى.</p>
+        <div class="hero-actions"><a class="btn" href="#work">اكتشفي أعمالنا</a><a class="text-link" href="#services">تعرّفي على خدماتنا</a></div>
+      </div>
+      <div class="hero-art">
+        <div class="decor"></div>
+        <div class="hero-frame"><img src="assets/earthy-wedding-invitation.png" alt="تصميم دعوة زفاف بألوان ترابية"></div>
+        <div class="hero-stamp">a little piece of forever</div>
+      </div>
+    </section>
+
+    <section class="services" id="services">
+      <div class="wrap">
+        <div class="section-head"><div class="eyebrow">WHAT WE CREATE</div><h2>خدمات صُمّمت للحظاتك</h2><p>من أول دعوة، إلى آخر تفصيل يكمّل مناسبتك.</p></div>
+        <div class="service-grid">
+          <article class="service"><div class="service-no">01 / INVITATIONS</div><h3>الدعوات الإلكترونية</h3><p>دعوات رقمية بتصاميم خاصة، سهلة المشاركة وتحمل طابع مناسبتك.</p></article>
+          <article class="service"><div class="service-no">02 / PRINTED CARDS</div><h3>الكروت المطبوعة</h3><p>كروت دعوة وتفاصيل ورقية مختارة بعناية لتكون جزءاً من ذكرى يومك.</p></article>
+          <article class="service"><div class="service-no">03 / PARTY DETAILS</div><h3>تفاصيل الحفلات</h3><p>لمسات وتوزيعات وتفاصيل متناسقة تضيف لمناسبتك حضوراً خاصاً.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap" id="work">
+      <div class="section-head"><div class="eyebrow">SELECTED WORKS</div><h2>من تفاصيل صنعناها بحب</h2><p>كل تصميم له حكاية، وهذه بعض الحكايات من أعمالنا.</p></div>
+      <div class="portfolio-grid">
+        <article class="project" data-project="purple">
+          <div class="project-image"><img src="assets/wedding-set-invitation.png" alt="بطاقة دعوة زفاف بتفاصيل زهرية بنفسجية"></div>
+          <div class="project-meta"><h3>مجموعة دعوة زفاف زهرية</h3><span>دعوات زفاف</span></div>
+        </article>
+        <article class="project" data-project="earthy">
+          <div class="project-image"><img src="assets/earthy-wedding-invitation.png" alt="دعوة زفاف بألوان ترابية ورسومات زهرية"></div>
+          <div class="project-meta"><h3>دعوة زفاف بطابع ترابي</h3><span>دعوات زفاف</span></div>
+        </article>
+      </div>
+      <p class="project-note">المعرض قابل للإضافة والتحديث — سنضيف بقية التصاميم والفيديوهات عند تجهيزها.</p>
+    </section>
+
+    <section class="about" id="about">
+      <div class="wrap about-inner"><div class="eyebrow">THE STORY BEHIND THE DETAILS</div><h2>كل لحظة تستحق أن تُحفظ.</h2><p>في Made Memory نؤمن أن جمال المناسبة يكمن في تفاصيلها. لذلك نصنع تصاميم تجمع بين الذوق، والاهتمام، واللمسة الشخصية؛ لتكون كل قطعة جزءاً من ذكرى لا تُنسى.</p></div>
+    </section>
+
+    <section class="request" id="request">
+      <div class="wrap">
+        <div class="section-head"><div class="eyebrow">LET'S MAKE A MEMORY</div><h2>خلّينا نبدأ تفاصيل مناسبتك</h2><p>احكي لنا عن فكرتك، ومنرجعلك لنتابع تفاصيل الطلب.</p></div>
+        <form class="request-form" id="requestForm">
+          <div class="field"><label for="customer">الاسم</label><input id="customer" name="customer" placeholder="اسمك" required></div>
+          <div class="field"><label for="contact">رقم التواصل أو حساب إنستغرام</label><input id="contact" name="contact" placeholder="كيف فينا نتواصل معك؟" required></div>
+          <div class="field"><label for="occasion">نوع المناسبة</label><select id="occasion" name="occasion" required><option value="">اختاري نوع المناسبة</option><option>زفاف</option><option>خطوبة</option><option>عيد ميلاد</option><option>تخرّج</option><option>مناسبة أخرى</option></select></div>
+          <div class="field"><label for="service">الخدمة المطلوبة</label><select id="service" name="service" required><option value="">اختاري الخدمة</option><option>دعوة إلكترونية</option><option>كروت مطبوعة</option><option>تفاصيل حفلات وتوزيعات</option><option>باقة متكاملة</option><option>غير متأكدة بعد</option></select></div>
+          <div class="field"><label for="date">تاريخ المناسبة (اختياري)</label><input id="date" name="date" type="date"></div>
+          <div class="field"><label for="quantity">الكمية التقريبية (اختياري)</label><input id="quantity" name="quantity" placeholder="مثلاً: 100 كرت"></div>
+          <div class="field full"><label for="details">تفاصيل إضافية</label><textarea id="details" name="details" placeholder="شاركونا فكرتكم أو أي تفاصيل بتحبوا نعرفها..."></textarea></div>
+          <button class="btn" type="submit">إرسال الطلب عبر واتساب</button>
+          <p class="form-hint" id="formHint">بعد الضغط، سيفتح واتساب برسالة جاهزة تتضمن تفاصيل طلبك. راجعي الرسالة واضغطي إرسال لإتمام الطلب.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="wrap footer-inner"><a class="brand" href="#home"><strong>Made Memory</strong><span>ميد ميموري</span></a><small>© <span id="year"></span> Made Memory — كل الحقوق محفوظة</small><small>تفاصيل صغيرة، ذكريات تدوم.</small></div></footer>
+
+  <div class="modal" id="projectModal" role="dialog" aria-modal="true" aria-label="تفاصيل المشروع">
+    <div class="modal-box"><button class="modal-close" id="modalClose" aria-label="إغلاق">×</button><h3 class="modal-title" id="modalTitle"></h3><div class="modal-images" id="modalImages"></div></div>
+  </div>
+  <script>
+    const nav=document.getElementById('nav');
+    document.getElementById('menuBtn').addEventListener('click',()=>nav.classList.toggle('show'));
+    nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('show')));
+    document.getElementById('year').textContent=new Date().getFullYear();
+    const modal=document.getElementById('projectModal'), modalTitle=document.getElementById('modalTitle'), modalImages=document.getElementById('modalImages');
+    const projects={
+      purple:{title:'مجموعة دعوة زفاف زهرية',images:['assets/wedding-set-cover.png','assets/wedding-set-invitation.png']},
+      earthy:{title:'دعوة زفاف بطابع ترابي',images:['assets/earthy-wedding-invitation.png']}
+    };
+    document.querySelectorAll('.project').forEach(card=>card.addEventListener('click',()=>{
+      const p=projects[card.dataset.project]; modalTitle.textContent=p.title;
+      modalImages.innerHTML=p.images.map(src=>`<img src="${src}" alt="${p.title}">`).join('');
+      modal.classList.add('open'); document.body.style.overflow='hidden';
+    }));
+    function closeModal(){modal.classList.remove('open');document.body.style.overflow=''}
+    document.getElementById('modalClose').addEventListener('click',closeModal);
+    modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+    document.getElementById('requestForm').addEventListener('submit',e=>{
+      e.preventDefault();
+      const form = e.currentTarget;
+      const data = new FormData(form);
+      const labels = {
+        customer: 'الاسم',
+        contact: 'رقم التواصل أو إنستغرام',
+        occasion: 'نوع المناسبة',
+        service: 'الخدمة المطلوبة',
+        date: 'تاريخ المناسبة',
+        quantity: 'الكمية التقريبية',
+        details: 'تفاصيل إضافية'
+      };
+      const lines = ['مرحباً Made Memory، حابة أقدّم طلب جديد ✨', ''];
+      for (const [key, label] of Object.entries(labels)) {
+        const value = (data.get(key) || '').toString().trim();
+        if (value) lines.push(`${label}: ${value}`);
+      }
+      lines.push('', 'بانتظار تواصلكم لتأكيد التفاصيل، شكراً ❤️');
+      const message = encodeURIComponent(lines.join('\\n'));
+      const whatsappNumber = '963954866402';
+      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
+      window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+      document.getElementById('formHint').textContent='رح يفتح واتساب برسالة جاهزة. راجعي التفاصيل واضغطي إرسال من داخل واتساب لإتمام الطلب.';
+    });
+  </script>
+</body>
+</html>
